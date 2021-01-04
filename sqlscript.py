@@ -8,8 +8,9 @@ regex = re.compile("^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$")
 card_limit = int(sys.argv[1])
 n = 0
 rows = 0
+table = str(sys.argv[2])
 
-print("CREATE TABLE CARDDATA (a, b, c, d, e);")
+print("CREATE TABLE", table, "(a, b, c, d, e);")
 
 
 def luhn_checksum(card_number):
@@ -40,7 +41,7 @@ while n < card_limit:
     cardnum = random.randrange(4000000000000000, 6000000000000000, 1)
     if is_cardnumber(str(cardnum)) and is_luhn_valid(cardnum) :
         if rows == 0:
-            print("INSERT INTO CARDDATA (", end = '')
+            print("INSERT INTO", table, "(", end = '')
 
         print(cardnum, end='')
         n = n + 1
