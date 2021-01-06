@@ -10,7 +10,7 @@ n = 0
 rows = 0
 table = str(sys.argv[2])
 
-print("CREATE TABLE", table, "(a, b, c, d, e);")
+print("CREATE TABLE", table, "(a varchar(50), b varchar(50), c varchar(50), d varchar(50), e varchar(50));")
 
 
 def luhn_checksum(card_number):
@@ -41,9 +41,10 @@ while n < card_limit:
     cardnum = random.randrange(4000000000000000, 6000000000000000, 1)
     if is_cardnumber(str(cardnum)) and is_luhn_valid(cardnum) :
         if rows == 0:
-            print("INSERT INTO", table, "(", end = '')
-
-        print(cardnum, end='')
+            print("INSERT INTO", table, "VALUES (", end = "")
+        
+        print("'", end = '')
+        print(cardnum, end="'")
         n = n + 1
         rows = rows + 1
         if rows == 5:
